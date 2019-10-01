@@ -6,13 +6,18 @@
 package medicine.interfaces;
 
 import java.util.Scanner;
+import medicine.exceptions.ExceptionHandler;
 
 /**
  *
  * @author 2ndyrGroupC
  */
-public class registration {
-    
-    
-    
+public class Registration {
+
+    private Writers writer = new Writers();
+
+    public void register(Scanner write) {
+        ExceptionHandler.StringCheck(writer.WriteFname(write));
+        ExceptionHandler.StringCheck(writer.WriteLname(write));
+    }
 }

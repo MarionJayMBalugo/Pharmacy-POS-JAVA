@@ -5,8 +5,8 @@
  */
 package medicine.main;
 
-import medicine.medicine.MedicineList;
-import medicine.users.*;
+import java.util.Scanner;
+import medicine.interfaces.Registration;
 
 /**
  *
@@ -18,9 +18,10 @@ public class MedicinePOSsystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-               
-        
+        Scanner write=new Scanner(System.in);
+        Registration a=new Registration();
+        a.register(write);
+       
     }
 
 }

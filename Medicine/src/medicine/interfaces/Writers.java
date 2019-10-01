@@ -41,4 +41,12 @@ public class Writers {
         }
         return ans;
     }
+    public String WriteFname(Scanner write){
+        String fname=WriteString(write,"firstname");
+        return fname;
+    }
+    public String WriteLname(Scanner write){
+        String lname=WriteString(write,"lastname");
+        return lname;
+    }
 }

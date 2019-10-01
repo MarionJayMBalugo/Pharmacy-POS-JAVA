@@ -5,23 +5,24 @@
  */
 package medicine.users;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+
 
 /**
  *
  * @author 2ndyrGroupC
  */
 public class AccountList {
-    private HashMap<String,String>accountList=new HashMap();
+    private ArrayList<Account>accountList=new ArrayList();
 
     public AccountList() {
     }
 
-    public HashMap<String, String> getAccountList() {
+    public ArrayList<Account> getAccountList() {
         return accountList;
     }
 
-    public void setAccountList(HashMap<String, String> accountList) {
+    public void setAccountList(ArrayList<Account> accountList) {
         this.accountList = accountList;
     }
 
