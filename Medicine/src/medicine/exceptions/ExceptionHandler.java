@@ -17,6 +17,7 @@ public class ExceptionHandler {
             char y = word.charAt(x);
             if (Character.isDigit(y)) {
                 ans = true;
+                break;
             }
         }
         return ans;
@@ -28,6 +29,7 @@ public class ExceptionHandler {
             char y = word.charAt(x);
             if (Character.isLetter(y) == false) {
                 ans = true;
+                break;
             }
         }
         return ans;
@@ -44,4 +46,5 @@ public class ExceptionHandler {
     public static void StringCheck(String string) {
         charShouldNotBeNumber(string);
     }
+
 }

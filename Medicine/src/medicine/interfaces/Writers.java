@@ -13,7 +13,9 @@ import java.util.Scanner;
  * @author 2ndyrGroupC
  */
 public class Writers {
-
+    public void string(String string) {
+        System.out.println("---" + string + " input success---");
+    }
     public String WriteString(Scanner write, String string) {
         System.out.println("enter your " + string);
         String ans = write.next();
@@ -22,12 +24,8 @@ public class Writers {
 
     public int WriteInt(Scanner write, String string) {
         int ans = 0;
-        try {
-            System.out.println("enter your " + string);
-            ans = write.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println("please enter a digit");
-        }
+        System.out.println("enter your " + string);
+        ans = write.nextInt();
         return ans;
     }
 
@@ -41,12 +39,5 @@ public class Writers {
         }
         return ans;
     }
-    public String WriteFname(Scanner write){
-        String fname=WriteString(write,"firstname");
-        return fname;
-    }
-    public String WriteLname(Scanner write){
-        String lname=WriteString(write,"lastname");
-        return lname;
-    }
+
 }
