@@ -11,20 +11,17 @@ import java.util.Scanner;
  *
  * @author 2ndyrGroupC
  */
-public class AdminPrivilege {
-
-    public void addMed(Scanner write) {
-
+public class CustomerPrivilege {
+    public void viewReceipt(){
+        
     }
-
-    public void removeMed(Scanner write) {
-
+    public void viewMedicines(){
+        
     }
-
-    public void update(Scanner write) {
-
+    public void purchaseMedicines(Scanner write){
+        
     }
-    public void AdminPrivilege(Scanner write){
+    public void CustomerPrivilege(Scanner write){
         
     }
 }

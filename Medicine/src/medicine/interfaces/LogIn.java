@@ -5,11 +5,8 @@
  */
 package medicine.interfaces;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import medicine.exceptions.ExceptionHandler;
-
-import medicine.users.User;
 
 /**
  *
@@ -61,5 +58,5 @@ public class LogIn {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
 }

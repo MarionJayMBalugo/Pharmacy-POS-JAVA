@@ -74,12 +74,21 @@ public class Interface {
                     }
                     break;
                 case 2:
+                    //log In
                     System.out.println("log in");
                     log.logIn(write);
                     String acc = log.getAccname();
                     String pass = log.getPassword();
-                    for(User elem:useList.getAccountList()){
-                        
+                    if (useList.isVerified(acc, pass)) {
+                        if (useList.isInstanceOfAdmin(acc)) {
+                            System.out.println("Admin Account");
+                            System.out.println("press:\n1 to add medicine supply\n2 to remove medicine\n3 to update medicine\n4 to view medicine list");
+                        } else {
+                            System.out.println("Customer Account");
+
+                        }
+                    } else {
+                        System.out.println("incorrect logIn");
                     }
                     break;
                 case 3:
@@ -94,4 +103,5 @@ public class Interface {
         }
 
     }
+
 }
