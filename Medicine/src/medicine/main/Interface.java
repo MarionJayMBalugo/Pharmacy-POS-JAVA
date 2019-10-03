@@ -11,6 +11,7 @@ import medicine.interfaces.LogIn;
 import medicine.interfaces.Register;
 import medicine.users.UserList;
 import medicine.users.Admin;
+import medicine.users.AdminPrivilege;
 import medicine.users.Customer;
 import medicine.users.User;
 
@@ -26,6 +27,7 @@ public class Interface {
     private Scanner write = new Scanner(System.in);
     private UserList useList = new UserList();
     private LogIn log = new LogIn();
+    private AdminPrivilege adminAccess=new AdminPrivilege();
 
     public void Interface() {
 
@@ -82,7 +84,7 @@ public class Interface {
                     if (useList.isVerified(acc, pass)) {
                         if (useList.isInstanceOfAdmin(acc)) {
                             System.out.println("Admin Account");
-                            System.out.println("press:\n1 to add medicine supply\n2 to remove medicine\n3 to update medicine\n4 to view medicine list");
+                            adminAccess.AdminPrivilege(write);
                         } else {
                             System.out.println("Customer Account");
 

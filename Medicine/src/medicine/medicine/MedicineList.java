@@ -5,6 +5,7 @@
  */
 package medicine.medicine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -12,16 +13,17 @@ import java.util.HashMap;
  * @author 2ndyrGroupC
  */
 public class MedicineList {
-    private HashMap<String,Medicine>medicineList=new HashMap();
+
+    private ArrayList<Medicine> medicineList = new ArrayList();
 
     public MedicineList() {
     }
 
-    public HashMap<String, Medicine> getMedicineList() {
+    public ArrayList< Medicine> getMedicineList() {
         return medicineList;
     }
 
-    public void setMedicineList(HashMap<String, Medicine> medicineList) {
+    public void setMedicineList(ArrayList< Medicine> medicineList) {
         this.medicineList = medicineList;
     }
 
@@ -29,5 +31,16 @@ public class MedicineList {
     public String toString() {
         return medicineList.toString();
     }
-    
+
+    public boolean isMedicinePresent(String med) {
+        boolean ans=false;
+        for (Medicine elem:medicineList) {
+            if(med.equals(elem.getProduct().getName())){
+                ans=true;
+                System.out.println("medicine in List");
+                break;
+            }
+        }
+        return ans;
+    }
 }

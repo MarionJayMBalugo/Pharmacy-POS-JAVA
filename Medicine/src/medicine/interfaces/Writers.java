@@ -13,9 +13,11 @@ import java.util.Scanner;
  * @author 2ndyrGroupC
  */
 public class Writers {
+
     public void string(String string) {
         System.out.println("---" + string + " input success---");
     }
+
     public String WriteString(Scanner write, String string) {
         System.out.println("enter your " + string);
         String ans = write.next();
@@ -31,12 +33,10 @@ public class Writers {
 
     public double WriteDouble(Scanner write, String string) {
         double ans = 0;
-        try {
-            System.out.println("enter your " + string);
-            ans = write.nextDouble();
-        } catch (InputMismatchException e) {
-            System.out.println("please enter a digit");
-        }
+
+        System.out.println("enter your " + string);
+        ans = write.nextDouble();
+
         return ans;
     }
 
