@@ -9,6 +9,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import medicine.interfaces.LogIn;
 import medicine.interfaces.Register;
+import medicine.medicine.MedicineList;
 import medicine.users.UserList;
 import medicine.users.Admin;
 import medicine.users.AdminPrivilege;
@@ -28,9 +29,10 @@ public class Interface {
     private UserList useList = new UserList();
     private LogIn log = new LogIn();
     private AdminPrivilege adminAccess=new AdminPrivilege();
-
+    private MedicineList medList=new MedicineList();
     public void Interface() {
-
+        //instantiates the accountlist for admin and medicinelist
+        adminAccess.setMedList(medList);
         boolean end = true;
 //all transaction
         while (end) {
@@ -69,6 +71,9 @@ public class Interface {
                         admin = new Admin(regis.getFirstname(), regis.getLastname(), regis.getAge(), regis.getAccname(), regis.getPassword());
                         useList.addItem(admin);
                         System.out.println(useList);
+                       
+                        adminAccess.AdminPrivilege(write);
+                        medList.setMedicineList(adminAccess.getMedList().getMedicineList());
                     } else {
                         System.out.println("registering as cutomer");
                         custom = new Customer(regis.getFirstname(), regis.getLastname(), regis.getAge(), regis.getAccname(), regis.getPassword());

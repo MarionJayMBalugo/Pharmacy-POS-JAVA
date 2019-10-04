@@ -31,6 +31,10 @@ public class MedicineList {
     public String toString() {
         return medicineList.toString();
     }
+    public void addMedicineList(Medicine medicine) {
+        this.medicineList.add(medicine);
+    }
+
 
     public boolean isMedicinePresent(String med) {
         boolean ans=false;

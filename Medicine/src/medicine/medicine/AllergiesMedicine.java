@@ -15,4 +15,5 @@ public class AllergiesMedicine extends Medicine{
         super(brandName, genericName, name, quantity, price);
     }
     
+    
 }
