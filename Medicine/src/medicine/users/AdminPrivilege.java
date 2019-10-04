@@ -25,6 +25,25 @@ public class AdminPrivilege {
     private Writers writers = new Writers();
     private MedicineList medList = new MedicineList();
 
+    public AdminPrivilege() {
+    }
+
+    public Writers getWriters() {
+        return writers;
+    }
+
+    public void setWriters(Writers writers) {
+        this.writers = writers;
+    }
+
+    public MedicineList getMedList() {
+        return medList;
+    }
+
+    public void setMedList(MedicineList medList) {
+        this.medList = medList;
+    }
+
     public void addMed(Scanner write) {
 
         System.out.println("you can add now");
@@ -150,15 +169,181 @@ public class AdminPrivilege {
 
     public void removeMed(Scanner write) {
 
+        String med = null;
+        boolean end = true;
+        while (end) {
+            try {
+                med = writers.WriteString(write, "medicine generic name to be deleted");
+                ExceptionHandler.charShouldNotBeNumber(med);
+                end = false;
+            } catch (ArithmeticException e) {
+                System.out.println(e);
+            }
+
+            if (medList.isMedicinePresent(med)) {
+                medList.removeMed(med);
+                System.out.println("medicine removed");
+            } else {
+                System.out.println("med not in the list");
+            }
+        }
     }
 
     public void update(Scanner write) {
+        System.out.println("you can update now");
+        int type = 0;
+        boolean end = true;
 
+        String writes = null;
+        String writeName = null;
+        end = true;
+        while (end) {
+            writeName = writers.WriteString(write, "medicine name to be updated");
+            try {
+                ExceptionHandler.charShouldNotBeNumber(writeName);
+                end = false;
+            } catch (ArithmeticException e) {
+                System.out.println(e);
+            }
+        }
+        boolean endAll = true;
+        while (endAll) {
+            if (!medList.isMedicinePresent(writeName)) {
+                end = true;
+                while (end) {
+                    System.out.println("press:\n1 to update name\n2 to update brandname\n3 to update genericname\n4 to update price\n5 to update quantity\n6 to end");
+                    try {
+                        type = write.nextInt();
+                        if (type < 5) {
+                            end = false;
+                        } else {
+                            System.out.println("only choose in the given");
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println("we only accept numbers");
+                        write.next();
+                    }
+                }
+            }
+            switch (type) {
+                case 1:
+                    writes = null;
+                    end = true;
+                    while (end) {
+                        writes = writers.WriteString(write, "medicine name to be added");
+                        try {
+                            ExceptionHandler.charShouldNotBeNumber(writes);
+                            end = false;
+                        } catch (ArithmeticException e) {
+                            System.out.println(e);
+                        }
+                    }
+                    medList.updateName(writeName, writes);
+                    System.out.println("name updated");
+                    break;
+                case 2:
+
+                    //add brandname
+                    String brandname = null;
+                    end = true;
+                    while (end) {
+                        try {
+                            brandname = writers.WriteString(write, "medicine brand name to be added");
+                            ExceptionHandler.charShouldNotBeNumber(brandname);
+                            end = false;
+                        } catch (ArithmeticException e) {
+                            System.out.println(e);
+                        }
+                    }
+                    medList.updateName(writeName, brandname);
+                    System.out.println("brandname updated");
+                    break;
+                case 3:
+                    String generic = null;
+                    end = true;
+                    while (end) {
+
+                        try {
+                            generic = writers.WriteString(write, "medicine generic name to be added");
+                            ExceptionHandler.charShouldNotBeNumber(generic);
+                            end = false;
+                        } catch (ArithmeticException e) {
+                            System.out.println(e);
+                        }
+                    }
+                    medList.updateName(writeName, generic);
+                    System.out.println("generic updated");
+                    break;
+                case 4:
+                    double price = 0;
+                    end = true;
+                    while (end) {
+                        try {
+                            price = writers.WriteDouble(write, "medicine price to be added");
+                            end = false;
+                        } catch (InputMismatchException e) {
+                            System.out.println("we only accept valid numbers");
+                            write.next();
+                        }
+                    }
+                    medList.updatePrice(writeName, price);
+                    System.out.println("price updated");
+                    break;
+                case 5:
+                    int quantity = 0;
+                    end = true;
+                    while (end) {
+                        try {
+                            quantity = writers.WriteInt(write, "medicine quantity to be added");
+                            end = false;
+                        } catch (InputMismatchException e) {
+                            System.out.println("we only accept valid numbers");
+                            write.next();
+                        }
+                    }
+                    medList.updateQuantity(writeName, quantity);
+                    System.out.println("quantity updated");
+                    break;
+                case 6:
+                    endAll = false;
+                    break;
+                default:
+                    System.out.println("opps something went wrong while adding medicine!!");
+                    break;
+
+            }
+        }
     }
 
     public void AdminPrivilege(Scanner write) {
-        System.out.println("press:\n1 to add medicine supply\n2 to remove medicine\n3"
-                + " to update medicine\n4 to view medicine list");
-        addMed(write);
+        int tran = 0;
+        boolean end = true;
+        while (end) {
+            System.out.println("press:\n1 to add medicine supply\n2 to remove medicine\n3"
+                    + " to update medicine\n4 to view medicine list");
+            try {
+                tran = write.nextInt();
+                end = false;
+            } catch (InputMismatchException e) {
+                System.out.println("we only accept numbers");
+            }
+            switch (tran) {
+                case 1:
+                    addMed(write);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    update(write);
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("choose from what is given");
+                    break;
+            }
+
+        }
+
     }
 }

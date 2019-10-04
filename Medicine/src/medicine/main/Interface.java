@@ -28,8 +28,9 @@ public class Interface {
     private Scanner write = new Scanner(System.in);
     private UserList useList = new UserList();
     private LogIn log = new LogIn();
-    private AdminPrivilege adminAccess=new AdminPrivilege();
-    private MedicineList medList=new MedicineList();
+    private AdminPrivilege adminAccess = new AdminPrivilege();
+    private MedicineList medList = new MedicineList();
+
     public void Interface() {
         //instantiates the accountlist for admin and medicinelist
         adminAccess.setMedList(medList);
@@ -71,9 +72,10 @@ public class Interface {
                         admin = new Admin(regis.getFirstname(), regis.getLastname(), regis.getAge(), regis.getAccname(), regis.getPassword());
                         useList.addItem(admin);
                         System.out.println(useList);
-                       
+
                         adminAccess.AdminPrivilege(write);
                         medList.setMedicineList(adminAccess.getMedList().getMedicineList());
+                        System.out.println(medList.getMedicineList());
                     } else {
                         System.out.println("registering as cutomer");
                         custom = new Customer(regis.getFirstname(), regis.getLastname(), regis.getAge(), regis.getAccname(), regis.getPassword());
@@ -90,6 +92,7 @@ public class Interface {
                         if (useList.isInstanceOfAdmin(acc)) {
                             System.out.println("Admin Account");
                             adminAccess.AdminPrivilege(write);
+                            System.out.println(medList.getMedicineList());
                         } else {
                             System.out.println("Customer Account");
 

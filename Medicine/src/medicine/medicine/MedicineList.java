@@ -7,6 +7,7 @@ package medicine.medicine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  *
@@ -31,20 +32,86 @@ public class MedicineList {
     public String toString() {
         return medicineList.toString();
     }
+
     public void addMedicineList(Medicine medicine) {
         this.medicineList.add(medicine);
     }
 
-
     public boolean isMedicinePresent(String med) {
-        boolean ans=false;
-        for (Medicine elem:medicineList) {
-            if(med.equals(elem.getProduct().getName())){
-                ans=true;
+        boolean ans = false;
+        for (Medicine elem : medicineList) {
+            if (med.equals(elem.getProduct().getName())) {
+                ans = true;
                 System.out.println("medicine in List");
                 break;
             }
         }
         return ans;
     }
+
+    public void removeMed(String string) {
+        for (Medicine med : medicineList) {
+            if (string.equals(med.getProduct().getName())) {
+                medicineList.remove(med);
+                break;
+            }
+        }
+    }
+    public void updateName(String med,String name) {
+      
+        for (Medicine elem : medicineList) {
+            if (med.equals(elem.getProduct().getName())) {
+                elem.getProduct().setName(name);
+                System.out.println("medicine in List");
+                break;
+            }
+        }
+        
+    }
+    public void updateBrand(String med,String name) {
+      
+        for (Medicine elem : medicineList) {
+            if (med.equals(elem.getProduct().getName())) {
+                elem.setBrandName(name);
+                System.out.println("medicine in List");
+                break;
+            }
+        }
+        
+    }
+    public void updateGeneric(String med,String name) {
+      
+        for (Medicine elem : medicineList) {
+            if (med.equals(elem.getProduct().getName())) {
+                elem.setGenericName(name);
+                System.out.println("medicine in List");
+                break;
+            }
+        }
+        
+    }
+    public void updatePrice(String med,double price) {
+      
+        for (Medicine elem : medicineList) {
+            if (med.equals(elem.getProduct().getName())) {
+                elem.getProduct().setPrice(price);
+                System.out.println("medicine in List");
+                break;
+            }
+        }
+        
+    }
+    public void updateQuantity(String med,int quan) {
+      
+        for (Medicine elem : medicineList) {
+            if (med.equals(elem.getProduct().getName())) {
+                elem.getProduct().setQuantity(quan);
+                System.out.println("medicine in List");
+                break;
+            }
+        }
+        
+    }
+    
+    
 }
