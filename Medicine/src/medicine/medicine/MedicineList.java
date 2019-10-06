@@ -49,15 +49,77 @@ public class MedicineList {
         return ans;
     }
 
-    public void viewList() {
+    public void itemList() {
         Iterator itr = medicineList.iterator();
         if (itr.hasNext()) {
-            System.out.println(itr);
+            System.out.println(itr.next());
         }
     }
 
-    public void removeMed(String string) {
+    public void viewAlergiesMed() {
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("Alergies Medicine");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------");
         for (Medicine med : medicineList) {
+            if (med instanceof AllergiesMedicine) {
+                System.out.println(med);
+            }
+        }
+        System.out.println("\n\n");
+    }
+
+    public void viewBodyPainMed() {
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("Body Pain Medicine");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+        for (Medicine med : medicineList) {
+            if (med instanceof BodyPainMedicine) {
+                System.out.println(med);
+            }
+        }
+        System.out.println("\n\n");
+    }
+
+    public void viewCoughMed() {
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("Cough Medicine");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+        for (Medicine med : medicineList) {
+            if (med instanceof CoughMedicine) {
+                System.out.println(med);
+            }
+        }
+        System.out.println("\n\n");
+    }
+
+    public void viewHeadAcheMed() {
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("HeadAche Medicine");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+        for (Medicine med : medicineList) {
+            if (med instanceof HeadAcheMedicine) {
+                System.out.println(med);
+            }
+        }
+        System.out.println("\n\n");
+    }
+
+    public void viewList() {
+        System.out.println("==========================================================================================================================================================================");
+        System.out.println("medicine in the pharmacy");
+        System.out.println("==========================================================================================================================================================================");
+        viewAlergiesMed();
+        viewBodyPainMed();
+        viewCoughMed();
+        viewHeadAcheMed();
+        System.out.println("==========================================================================================================================================================================\n\n\n\n");
+
+    }
+
+    public void removeMed(String string) {
+
+        for (Medicine med : medicineList) {
+
             if (string.equals(med.getProduct().getName())) {
                 medicineList.remove(med);
                 break;

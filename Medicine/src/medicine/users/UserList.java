@@ -6,6 +6,8 @@
 package medicine.users;
 
 import java.util.ArrayList;
+import medicine.medicine.HeadAcheMedicine;
+import medicine.medicine.Medicine;
 
 /**
  *
@@ -69,6 +71,39 @@ public class UserList {
             }
         }
         return ans;
+    }
+
+    public void viewAdminAcc() {
+        System.out.println("---------------------------------------------------------------");
+        System.out.println("Admin Account");
+        System.out.println("---------------------------------------------------------------");
+        for (User med : accountList) {
+            if (med instanceof Admin) {
+                System.out.println(med);
+            }
+        }
+        System.out.println("\n\n");
+    }
+
+    public void viewCostumerAcc() {
+        System.out.println("---------------------------------------------------------------");
+        System.out.println("Costumer Account");
+        System.out.println("---------------------------------------------------------------");
+        for (User med : accountList) {
+            if (med instanceof Customer) {
+                System.out.println(med);
+            }
+        }
+        System.out.println("\n\n");
+    }
+
+    public void displayAcc() {
+        System.out.println("========================================================================================================");
+        System.out.println("user of the app");
+        System.out.println("========================================================================================================");
+        viewAdminAcc();
+        viewCostumerAcc();
+        System.out.println("========================================================================================================\n\n\n\n");
     }
 
 }

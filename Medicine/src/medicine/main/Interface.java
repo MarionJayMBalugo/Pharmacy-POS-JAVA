@@ -14,6 +14,7 @@ import medicine.users.UserList;
 import medicine.users.Admin;
 import medicine.users.AdminPrivilege;
 import medicine.users.Customer;
+import medicine.users.CustomerPrivilege;
 import medicine.users.User;
 
 /**
@@ -29,14 +30,18 @@ public class Interface {
     private UserList useList = new UserList();
     private LogIn log = new LogIn();
     private AdminPrivilege adminAccess = new AdminPrivilege();
+    private CustomerPrivilege customerAccess=new CustomerPrivilege();
     private MedicineList medList = new MedicineList();
 
     public void Interface() {
         //instantiates the accountlist for admin and medicinelist
         adminAccess.setMedList(medList);
+
         boolean end = true;
 //all transaction
         while (end) {
+            useList.displayAcc();
+            medList.viewList();
             int select = 0;
             System.out.println("press 1 to register\npress 2 to log in\npress 3 to exit application");
             try {
@@ -71,11 +76,9 @@ public class Interface {
                         System.out.println("registering as admin");
                         admin = new Admin(regis.getFirstname(), regis.getLastname(), regis.getAge(), regis.getAccname(), regis.getPassword());
                         useList.addItem(admin);
-                        System.out.println(useList);
 
-                       
                         medList.setMedicineList(adminAccess.getMedList().getMedicineList());
-                        System.out.println(medList.getMedicineList());
+
                     } else {
                         System.out.println("registering as cutomer");
                         custom = new Customer(regis.getFirstname(), regis.getLastname(), regis.getAge(), regis.getAccname(), regis.getPassword());
@@ -92,10 +95,9 @@ public class Interface {
                         if (useList.isInstanceOfAdmin(acc)) {
                             System.out.println("Admin Account");
                             adminAccess.AdminPrivilege(write);
-                            System.out.println(medList.getMedicineList());
                         } else {
                             System.out.println("Customer Account");
-
+                            customerAccess.CustomerPrivilege(write);
                         }
                     } else {
                         System.out.println("incorrect logIn");

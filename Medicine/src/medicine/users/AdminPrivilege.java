@@ -191,7 +191,6 @@ public class AdminPrivilege {
         double price = 0;
         end = true;
         while (end) {
-
             try {
                 writeName = writers.WriteString(write, "medicine name to be updated");
                 ExceptionHandler.charShouldNotBeNumber(writeName);
@@ -222,6 +221,8 @@ public class AdminPrivilege {
             } else {
 
                 System.out.println("not present opps");
+                endAll = false;
+                break;
 
             }
             switch (type) {
@@ -336,35 +337,43 @@ public class AdminPrivilege {
 
     public void AdminPrivilege(Scanner write) {
         int tran = 0;
-        boolean end = true;
-        while (end) {
-            System.out.println("press:\n1 to add medicine supply\n2 to remove medicine\n3"
-                    + " to update medicine\n4 to view medicine list");
-            try {
-                tran = write.nextInt();
-                end = false;
-            } catch (InputMismatchException e) {
-                System.out.println("we only accept numbers");
-            }
-            switch (tran) {
-                case 1:
-                    addMed(write);
-                    break;
-                case 2:
-                    removeMed(write);
-                    break;
-                case 3:
-                    update(write);
-                    break;
-                case 4:
-                    System.out.println("view medicines");
-                    medList.viewList();
-                    break;
-                default:
-                    System.out.println("choose from what is given");
-                    break;
-            }
+        
+        boolean endAll = true;
+        while (endAll) {
+            boolean end = true;
+            while (end) {
+                System.out.println("press:\n1 to add medicine supply\n2 to remove medicine\n3"
+                        + " to update medicine\n4 to view medicine list\n5 to log out");
+                try {
+                    tran = write.nextInt();
+                    end = false;
+                } catch (InputMismatchException e) {
+                    System.out.println("we only accept numbers");
+                }
+                switch (tran) {
+                    case 1:
+                        addMed(write);
+                        break;
+                    case 2:
+                        removeMed(write);
+                        break;
+                    case 3:
+                        update(write);
+                        break;
+                    case 4:
+                        System.out.println("view medicines");
+                        medList.viewList();
+                        break;
+                    case 5:
+                        System.out.println("logging out");
+                        endAll = false;
+                        break;
+                    default:
+                        System.out.println("choose from what is given");
+                        break;
+                }
 
+            }
         }
 
     }
