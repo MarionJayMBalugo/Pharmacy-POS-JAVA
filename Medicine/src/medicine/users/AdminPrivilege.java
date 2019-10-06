@@ -64,32 +64,21 @@ public class AdminPrivilege {
                 write.next();
             }
         }
-        String writes = null;
+        String medicine = null;
         end = true;
         while (end) {
-            writes = writers.WriteString(write, "medicine name to be added");
+            medicine = writers.WriteString(write, "medicine name to be added");
             try {
-                ExceptionHandler.charShouldNotBeNumber(writes);
+                ExceptionHandler.charShouldNotBeNumber(medicine);
                 end = false;
             } catch (ArithmeticException e) {
                 System.out.println(e);
             }
         }
-        if (!medList.isMedicinePresent(writes)) {
+        if (!medList.isMedicinePresent(medicine)) {
             System.out.println("fill up medicine information");
             //add medicine name
-            String medicine = null;
-            end = true;
-            while (end) {
-                try {
-                    medicine = writers.WriteString(write, "medicine name to be added");
-                    ExceptionHandler.charShouldNotBeNumber(medicine);
-                    end = false;
-                } catch (ArithmeticException e) {
-                    System.out.println(e);
 
-                }
-            }
             //add brandname
             String brandname = null;
             end = true;
@@ -170,6 +159,7 @@ public class AdminPrivilege {
     public void removeMed(Scanner write) {
 
         String med = null;
+
         boolean end = true;
         while (end) {
             try {
@@ -193,28 +183,33 @@ public class AdminPrivilege {
         System.out.println("you can update now");
         int type = 0;
         boolean end = true;
-
-        String writes = null;
         String writeName = null;
+        String writes = null;
+        String brandname = null;
+        String generic = null;
+        int quantity = 0;
+        double price = 0;
         end = true;
         while (end) {
-            writeName = writers.WriteString(write, "medicine name to be updated");
+
             try {
+                writeName = writers.WriteString(write, "medicine name to be updated");
                 ExceptionHandler.charShouldNotBeNumber(writeName);
                 end = false;
             } catch (ArithmeticException e) {
+                write.next();
                 System.out.println(e);
             }
         }
         boolean endAll = true;
         while (endAll) {
-            if (!medList.isMedicinePresent(writeName)) {
+            if (medList.isMedicinePresent(writeName)) {
                 end = true;
                 while (end) {
                     System.out.println("press:\n1 to update name\n2 to update brandname\n3 to update genericname\n4 to update price\n5 to update quantity\n6 to end");
                     try {
                         type = write.nextInt();
-                        if (type < 5) {
+                        if (type < 7) {
                             end = false;
                         } else {
                             System.out.println("only choose in the given");
@@ -224,84 +219,90 @@ public class AdminPrivilege {
                         write.next();
                     }
                 }
+            } else {
+
+                System.out.println("not present opps");
+
             }
             switch (type) {
                 case 1:
-                    writes = null;
+
                     end = true;
                     while (end) {
-                        writes = writers.WriteString(write, "medicine name to be added");
+                        writes = writers.WriteString(write, "medicine name to be replace");
                         try {
                             ExceptionHandler.charShouldNotBeNumber(writes);
                             end = false;
                         } catch (ArithmeticException e) {
                             System.out.println(e);
+                            write.next();
                         }
                     }
-                    medList.updateName(writeName, writes);
+
                     System.out.println("name updated");
                     break;
                 case 2:
 
                     //add brandname
-                    String brandname = null;
                     end = true;
                     while (end) {
                         try {
-                            brandname = writers.WriteString(write, "medicine brand name to be added");
+                            brandname = writers.WriteString(write, "new medicine brand name ");
                             ExceptionHandler.charShouldNotBeNumber(brandname);
                             end = false;
                         } catch (ArithmeticException e) {
                             System.out.println(e);
+                            write.next();
                         }
                     }
-                    medList.updateName(writeName, brandname);
-                    System.out.println("brandname updated");
+
+                    System.out.println("new brandname updated");
                     break;
                 case 3:
-                    String generic = null;
+
                     end = true;
                     while (end) {
 
                         try {
-                            generic = writers.WriteString(write, "medicine generic name to be added");
+                            generic = writers.WriteString(write, "new medicine generic name to replace");
                             ExceptionHandler.charShouldNotBeNumber(generic);
                             end = false;
                         } catch (ArithmeticException e) {
                             System.out.println(e);
+                            write.next();
                         }
                     }
-                    medList.updateName(writeName, generic);
+
                     System.out.println("generic updated");
                     break;
                 case 4:
-                    double price = 0;
+
                     end = true;
                     while (end) {
                         try {
-                            price = writers.WriteDouble(write, "medicine price to be added");
+                            price = writers.WriteDouble(write, "new medicine price ");
                             end = false;
                         } catch (InputMismatchException e) {
                             System.out.println("we only accept valid numbers");
                             write.next();
                         }
                     }
-                    medList.updatePrice(writeName, price);
+
                     System.out.println("price updated");
                     break;
                 case 5:
-                    int quantity = 0;
+
                     end = true;
                     while (end) {
                         try {
-                            quantity = writers.WriteInt(write, "medicine quantity to be added");
+                            quantity = writers.WriteInt(write, "new medicine quantity ");
                             end = false;
                         } catch (InputMismatchException e) {
                             System.out.println("we only accept valid numbers");
                             write.next();
                         }
                     }
-                    medList.updateQuantity(writeName, quantity);
+
                     System.out.println("quantity updated");
                     break;
                 case 6:
@@ -312,7 +313,25 @@ public class AdminPrivilege {
                     break;
 
             }
+
         }
+        if (writes != "NULL") {
+            medList.updateName(writeName, writes);
+
+        }
+        if (brandname != "NULL") {
+            medList.updateName(writeName, brandname);
+        }
+        if (generic != "NULL") {
+            medList.updateName(writeName, generic);
+        }
+        if (quantity != 0) {
+            medList.updateQuantity(writeName, quantity);
+        }
+        if (price != 0) {
+            medList.updatePrice(writeName, price);
+        }
+
     }
 
     public void AdminPrivilege(Scanner write) {
@@ -332,11 +351,14 @@ public class AdminPrivilege {
                     addMed(write);
                     break;
                 case 2:
+                    removeMed(write);
                     break;
                 case 3:
                     update(write);
                     break;
                 case 4:
+                    System.out.println("view medicines");
+                    medList.viewList();
                     break;
                 default:
                     System.out.println("choose from what is given");

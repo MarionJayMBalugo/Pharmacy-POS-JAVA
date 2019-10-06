@@ -73,7 +73,7 @@ public class Interface {
                         useList.addItem(admin);
                         System.out.println(useList);
 
-                        adminAccess.AdminPrivilege(write);
+                       
                         medList.setMedicineList(adminAccess.getMedList().getMedicineList());
                         System.out.println(medList.getMedicineList());
                     } else {

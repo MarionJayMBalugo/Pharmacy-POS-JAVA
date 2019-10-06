@@ -49,6 +49,13 @@ public class MedicineList {
         return ans;
     }
 
+    public void viewList() {
+        Iterator itr = medicineList.iterator();
+        if (itr.hasNext()) {
+            System.out.println(itr);
+        }
+    }
+
     public void removeMed(String string) {
         for (Medicine med : medicineList) {
             if (string.equals(med.getProduct().getName())) {
@@ -57,8 +64,9 @@ public class MedicineList {
             }
         }
     }
-    public void updateName(String med,String name) {
-      
+
+    public void updateName(String med, String name) {
+
         for (Medicine elem : medicineList) {
             if (med.equals(elem.getProduct().getName())) {
                 elem.getProduct().setName(name);
@@ -66,10 +74,11 @@ public class MedicineList {
                 break;
             }
         }
-        
+
     }
-    public void updateBrand(String med,String name) {
-      
+
+    public void updateBrand(String med, String name) {
+
         for (Medicine elem : medicineList) {
             if (med.equals(elem.getProduct().getName())) {
                 elem.setBrandName(name);
@@ -77,10 +86,11 @@ public class MedicineList {
                 break;
             }
         }
-        
+
     }
-    public void updateGeneric(String med,String name) {
-      
+
+    public void updateGeneric(String med, String name) {
+
         for (Medicine elem : medicineList) {
             if (med.equals(elem.getProduct().getName())) {
                 elem.setGenericName(name);
@@ -88,10 +98,11 @@ public class MedicineList {
                 break;
             }
         }
-        
+
     }
-    public void updatePrice(String med,double price) {
-      
+
+    public void updatePrice(String med, double price) {
+
         for (Medicine elem : medicineList) {
             if (med.equals(elem.getProduct().getName())) {
                 elem.getProduct().setPrice(price);
@@ -99,10 +110,11 @@ public class MedicineList {
                 break;
             }
         }
-        
+
     }
-    public void updateQuantity(String med,int quan) {
-      
+
+    public void updateQuantity(String med, int quan) {
+
         for (Medicine elem : medicineList) {
             if (med.equals(elem.getProduct().getName())) {
                 elem.getProduct().setQuantity(quan);
@@ -110,8 +122,7 @@ public class MedicineList {
                 break;
             }
         }
-        
+
     }
-    
-    
+
 }

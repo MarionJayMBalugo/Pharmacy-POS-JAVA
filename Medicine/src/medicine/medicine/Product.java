@@ -49,7 +49,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return String.format("product name: %-20s price: %-20d quantity:%-20.2f Php",this.Name,this.quantity,this.price);
+        return String.format("product name: %-20s quantity: %-20d price:%-20.2f Php",this.Name,this.quantity,this.price);
     }
     
 }
